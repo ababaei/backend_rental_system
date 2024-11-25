@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  id       String   @id @default(uuid())
+  name     String
+  email    String
+  timezone String
+  rentals  Rental[]
+}
+
+model Rental {
+  id         String   @id @default(uuid())
+  customerId String
+  filmId     String
+  startDate  DateTime
+  returnDate DateTime
+  customer   Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+}
+
+model Film {
+  id    String   @id @default(uuid())
+  title String
+  genre String
+}

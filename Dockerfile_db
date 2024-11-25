@@ -1,0 +1,11 @@
+FROM postgres:15-alpine
+
+WORKDIR /tmp
+
+COPY database/* ./
+
+RUN chown postgres:root ./init-db.sh ./schema.sql ./data.sql 
+
+EXPOSE 5432
+
+CMD ["/bin/bash", "/tmp/init-db.sh"]

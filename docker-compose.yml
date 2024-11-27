@@ -15,9 +15,7 @@ services:
         condition: service_healthy
 
   db:
-    build:
-      context: .
-      dockerfile: Dockerfile_db
+    image: postgres:17
     container_name: database
     restart: always
     env_file:
@@ -29,3 +27,6 @@ services:
       interval: 5s
       timeout: 2s
       retries: 10
+    volumes:
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/1-schema.sql:z
+      - ./database/data.sql:/docker-entrypoint-initdb.d/2-data.sql:z

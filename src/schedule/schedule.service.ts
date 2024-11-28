@@ -47,7 +47,7 @@ export class ScheduleService {
     });
 
     for (const rental of rentals) {
-      console.log(`Sending email reminder for rental ${rental.rental_id}`);
+      console.log(`Sending email reminder to ${rental.customer.email} for rental ${rental.rental_id}`);
       // Simuler l'envoi d'email ici
     }
   }

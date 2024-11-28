@@ -526,7 +526,7 @@ ALTER TABLE public.rental_rental_id_seq OWNER TO postgres;
 CREATE TABLE rental (
     rental_id integer DEFAULT nextval('rental_rental_id_seq'::regclass) NOT NULL,
     rental_date timestamp with time zone NOT NULL,
-    inventory_id integer NOT NULL,
+    inventory_id integer,
     customer_id integer NOT NULL,
     return_date timestamp with time zone,
     staff_id integer,

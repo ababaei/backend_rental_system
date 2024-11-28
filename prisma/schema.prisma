@@ -20,8 +20,7 @@ model customer {
 model rental {
   rental_id         Int   @id @default(autoincrement())
   customer_id Int
-  inventory_id     String
-  rental_date  DateTime
+  rental_date DateTime
   return_date DateTime
   
   customer   customer @relation(fields: [customer_id], references: [customer_id], onDelete: Cascade)

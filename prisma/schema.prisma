@@ -9,7 +9,7 @@ datasource db {
 }
 
 model customer {
-  customer_id       String   @id @default(uuid())
+  customer_id       Int   @id @default(autoincrement())
   first_name     String
   last_name      String
   email    String
@@ -18,8 +18,8 @@ model customer {
 }
 
 model rental {
-  rental_id         String   @id @default(uuid())
-  customer_id String
+  rental_id         Int   @id @default(autoincrement())
+  customer_id Int
   inventory_id     String
   rental_date  DateTime
   return_date DateTime
@@ -28,18 +28,6 @@ model rental {
 }
 
 model film {
-  id    String   @id @default(uuid())
+  film_id    String   @id @default(uuid())
   title String
-  genre String
 }
-
-
-
-CREATE TABLE rental (
-    rental_id integer DEFAULT nextval('rental_rental_id_seq'::regclass) NOT NULL,
-    rental_date timestamp with time zone NOT NULL,
-    inventory_id integer NOT NULL,
-    customer_id integer NOT NULL,
-    return_date timestamp with time zone,
-    staff_id integer NOT NULL,
-    last_update timestamp without time zone DEFAULT now() NOT NULL

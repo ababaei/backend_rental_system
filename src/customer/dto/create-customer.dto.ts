@@ -2,7 +2,10 @@ import { IsString, IsEmail, IsTimeZone } from 'class-validator';
 
 export class CreateCustomerDto {
     @IsString()
-    name: string;
+    first_name: string;
+
+    @IsString()
+    last_name: string;
 
     @IsEmail()
     email: string;

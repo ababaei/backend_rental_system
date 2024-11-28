@@ -16,7 +16,7 @@ export class ScheduleService {
 
     const rentals = await this.prisma.rental.findMany({
       where: {
-        returnDate: targetDate,
+        return_date: targetDate,
       },
       include: {
         customer: true, // Inclut les informations sur le client pour l'email
@@ -24,7 +24,7 @@ export class ScheduleService {
     });
 
     for (const rental of rentals) {
-      console.log(`Sending email reminder to ${rental.customer.email} for rental ${rental.id}`);
+      console.log(`Sending email reminder to ${rental.customer.email} for rental ${rental.rental_id}`);
       // Simuler l'envoi d'email ici
     }
   }
@@ -39,7 +39,7 @@ export class ScheduleService {
 
     const rentals = await this.prisma.rental.findMany({
       where: {
-        returnDate: targetDate,
+        return_date: targetDate,
       },
       include: {
         customer: true,
@@ -47,7 +47,7 @@ export class ScheduleService {
     });
 
     for (const rental of rentals) {
-      console.log(`Sending email reminder to ${rental.customer.email} for rental ${rental.id}`);
+      console.log(`Sending email reminder for rental ${rental.rental_id}`);
       // Simuler l'envoi d'email ici
     }
   }

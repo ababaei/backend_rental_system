@@ -313,12 +313,12 @@ ALTER TABLE public.customer_customer_id_seq OWNER TO postgres;
 
 CREATE TABLE customer (
     customer_id integer DEFAULT nextval('customer_customer_id_seq'::regclass) NOT NULL,
-    store_id integer NOT NULL,
+    store_id integer,
     first_name character varying(45) NOT NULL,
     last_name character varying(45) NOT NULL,
     email character varying(50),
-    address_id integer NOT NULL,
-    activebool boolean DEFAULT true NOT NULL,
+    address_id integer,
+    activebool boolean DEFAULT true,
     create_date date DEFAULT ('now'::text)::date NOT NULL,
     last_update timestamp without time zone DEFAULT now(),
     timezone character varying(50) DEFAULT 'UTC' NOT NULL,
@@ -529,7 +529,7 @@ CREATE TABLE rental (
     inventory_id integer NOT NULL,
     customer_id integer NOT NULL,
     return_date timestamp with time zone,
-    staff_id integer NOT NULL,
+    staff_id integer,
     last_update timestamp without time zone DEFAULT now() NOT NULL
 );
 

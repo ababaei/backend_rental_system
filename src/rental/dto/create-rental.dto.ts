@@ -2,16 +2,16 @@ import { IsString, IsDateString, IsNotEmpty } from 'class-validator';
 
 export class CreateRentalDto {
     @IsString()
-    customerId: string;
+    customer_id: number;
 
     @IsString()
-    filmId: string;
+    inventory_id: string;
 
     @IsDateString()
     @IsNotEmpty()
-    startDate: string;
+    rental_date: string;
 
     @IsDateString()
     @IsNotEmpty()
-    returnDate: string;
+    return_date: string;
 }

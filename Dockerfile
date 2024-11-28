@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ./databse/migrate.sh; npm run start:dev;
+CMD ./database/migrate.sh; npm run start:dev;

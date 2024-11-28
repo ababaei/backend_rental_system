@@ -7,10 +7,21 @@ import { RentalModule } from './rental/rental.module';
 import { CustomerModule } from './customer/customer.module';
 import { FilmModule } from './film/film.module';
 import { NotificationModule } from './notification/notification.module';
+import { PrismaModule } from './prisma/prisma.module';
+import { ScheduleModule } from '@nestjs/schedule';
+import { ScheduleService } from './schedule/schedule.service';
+import { ScheduleController } from './schedule/schedule.controller';
 
 @Module({
-  imports: [RentalModule, CustomerModule, FilmModule, NotificationModule],
-  controllers: [AppController],
-  providers: [AppService, PrismaService, RentalService],
+  imports: [
+    RentalModule,
+    CustomerModule,
+    FilmModule,
+    NotificationModule,
+    PrismaModule,
+    ScheduleModule.forRoot()
+  ],
+  controllers: [AppController, ScheduleController],
+  providers: [AppService, PrismaService, RentalService, ScheduleService],
 })
 export class AppModule {}
